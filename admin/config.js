@@ -1,6 +1,6 @@
-// Add your Supabase project URL and publishable key here.
-// These browser values are not secrets. Never put a service_role key in this file.
+// Supabase browser configuration. The publishable key is safe to expose in client code.
+// Never add a service_role key or database password here.
 window.CRM_CONFIG = {
-  supabaseUrl: "",
-  supabasePublishableKey: ""
+  supabaseUrl: "https://tuznjmrxagakobcjgamw.supabase.co",
+  supabasePublishableKey: "sb_publishable_GcTPNCs_-F64t6Rcn38BHA_GU_NL6M5"
 };
