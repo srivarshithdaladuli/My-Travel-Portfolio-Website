@@ -1,6 +1,6 @@
 #srivarshith-ai{--sai-ink:#17211d;--sai-muted:#78827d;--sai-accent:#293a32;--sai-line:#e8ece9;--sai-paper:#fff;position:fixed;right:26px;bottom:24px;z-index:99999;font-family:inherit;color:var(--sai-ink)}
 #srivarshith-ai *{box-sizing:border-box}
-#srivarshith-ai .sai-launcher{display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:11px 17px 11px 11px;background:var(--sai-accent);color:#fff;box-shadow:0 10px 35px #17211d35;cursor:pointer;font:600 13px inherit;transition:transform .2s,opacity .2s}
+#srivarshith-ai .sai-launcher{display:flex;align-items:center;gap:10px;border:0;border-radius:999px;padding:11px 17px 11px 11px;background:var(--sai-accent);color:#fff;box-shadow:0 10px 35px #17211d35;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;transition:transform .2s,opacity .2s}
 #srivarshith-ai .sai-launcher:hover{transform:translateY(-3px)}
 #srivarshith-ai .sai-launcher-mark{width:35px;height:35px;display:grid;place-items:center;border-radius:50%;background:#ffffff20;font-size:20px}
 #srivarshith-ai .sai-launcher.sai-hidden{display:none}
@@ -19,10 +19,10 @@
 #srivarshith-ai .sai-bot{align-self:flex-start;background:#f2f5f2;border-bottom-left-radius:5px}
 #srivarshith-ai .sai-user{align-self:flex-end;background:var(--sai-accent);color:#fff;border-bottom-right-radius:5px}
 #srivarshith-ai .sai-suggestions{display:flex;flex-wrap:wrap;gap:7px}
-#srivarshith-ai .sai-suggestions button{border:1px solid var(--sai-line);border-radius:999px;padding:8px 10px;background:#fff;color:var(--sai-ink);font:12px inherit;cursor:pointer}
+#srivarshith-ai .sai-suggestions button{border:1px solid var(--sai-line);border-radius:999px;padding:8px 10px;background:#fff;color:var(--sai-ink);font-family:inherit;font-size:12px;cursor:pointer}
 #srivarshith-ai .sai-suggestions button:hover{border-color:var(--sai-accent)}
 #srivarshith-ai .sai-form{display:flex;gap:8px;align-items:center;margin:0 13px;padding:8px;border:1px solid var(--sai-line);border-radius:14px}
-#srivarshith-ai .sai-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--sai-ink);font:13px inherit}
+#srivarshith-ai .sai-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--sai-ink);font-family:inherit;font-size:13px}
 #srivarshith-ai .sai-form button{width:34px;height:34px;border:0;border-radius:10px;background:var(--sai-accent);color:#fff;font-size:19px;cursor:pointer}
 #srivarshith-ai .sai-form button:disabled{opacity:.5;cursor:wait}
 #srivarshith-ai .sai-footnote{text-align:center;padding:10px 8px 12px;color:var(--sai-muted);font-size:10px}
