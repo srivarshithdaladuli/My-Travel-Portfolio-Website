@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f7f7f5">
+  <title>Personal CRM · Srivarshith Daladuli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./crm.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./config.js"></script>
+  <script defer src="./crm.js"></script>
+</head>
+<body>
+  <div id="login-screen" class="login-screen">
+    <form id="login-form" class="login-card">
+      <div class="brand-mark">SD</div>
+      <p class="eyebrow">PRIVATE WORKSPACE</p>
+      <h1>Welcome back.</h1>
+      <p class="muted">Sign in to your personal command center.</p>
+      <label>Email address<input id="email" type="email" autocomplete="username" required placeholder="you@example.com"></label>
+      <label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="Your password"></label>
+      <button class="primary full" type="submit">Sign in <span>→</span></button>
+      <p id="login-error" class="error" role="alert"></p>
+      <p class="tiny muted">Access is restricted to your invited admin account.</p>
+    </form>
+  </div>
+
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="./"><span class="brand-mark small">SD</span><span><b>Srivarshith</b><small>PERSONAL CRM</small></span></a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav id="navigation">
+        <button class="nav-item active" data-view="overview"><span>⌂</span>Overview</button>
+        <button class="nav-item" data-view="contacts"><span>◉</span>Contacts</button>
+        <button class="nav-item" data-view="opportunities"><span>◇</span>Opportunities</button>
+        <button class="nav-item" data-view="projects"><span>▦</span>Projects</button>
+        <button class="nav-item" data-view="tasks"><span>✓</span>Tasks</button>
+        <button class="nav-item" data-view="finance"><span>₹</span>Finance</button>
+        <button class="nav-item" data-view="notes"><span>≡</span>Notes</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="user-chip"><div class="avatar">SD</div><div><b>Srivarshith</b><small>Administrator</small></div></div>
+        <button id="signout" class="nav-item signout"><span>↗</span>Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="menu-toggle" class="icon-btn mobile-only" aria-label="Toggle navigation">☰</button>
+        <div><p class="eyebrow" id="date-label">PERSONAL WORKSPACE</p><h2 id="page-title">Overview</h2></div>
+        <div class="top-actions"><span class="secure-pill"><i></i> Private</span><button id="quick-add" class="primary">＋ <span>New record</span></button></div>
+      </header>
+
+      <section id="setup-warning" class="notice hidden"></section>
+      <section id="view-overview" class="view">
+        <div class="welcome-row"><div><h1>Your work, in one place.</h1><p class="muted">A clear view of your professional and personal activity.</p></div><span class="date-chip" id="today-chip"></span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon">◉</span><p>Contacts</p><strong id="stat-contacts">0</strong><small>People in your network</small></article>
+          <article class="stat-card"><span class="stat-icon">◇</span><p>Open opportunities</p><strong id="stat-opportunities">0</strong><small>Jobs, clients and collaborations</small></article>
+          <article class="stat-card"><span class="stat-icon">▦</span><p>Active projects</p><strong id="stat-projects">0</strong><small>Work currently in progress</small></article>
+          <article class="stat-card"><span class="stat-icon">✓</span><p>Open tasks</p><strong id="stat-tasks">0</strong><small>Things to move forward</small></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel"><div class="panel-heading"><div><p class="eyebrow">YOUR PIPELINE</p><h3>Recent activity</h3></div><button class="text-btn" data-go="opportunities">View opportunities →</button></div><div id="recent-list" class="record-list empty-state">Your recent records will appear here.</div></article>
+          <article class="panel"><div class="panel-heading"><div><p class="eyebrow">UP NEXT</p><h3>Tasks to focus on</h3></div><button class="text-btn" data-go="tasks">All tasks →</button></div><div id="upcoming-list" class="record-list empty-state">No tasks yet. Add one when you're ready.</div></article>
+        </div>
+      </section>
+
+      <section id="view-records" class="view hidden">
+        <div class="toolbar"><div><p id="view-description" class="muted">Keep your information organised.</p></div><div class="toolbar-actions"><input id="record-search" class="search" type="search" placeholder="Search records…"><button id="add-record" class="primary">＋ Add record</button></div></div>
+        <div class="panel table-panel"><div class="table-wrap"><table><thead id="table-head"></thead><tbody id="table-body"></tbody></table></div><div id="empty-records" class="empty-block hidden"><div class="empty-icon">＋</div><h3>Nothing here yet</h3><p class="muted">Add your first record to get started.</p><button class="primary" id="empty-add">Add a record</button></div></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="record-dialog" class="record-dialog">
+    <form id="record-form" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow">PERSONAL CRM</p><h2 id="dialog-title">New record</h2></div><button type="button" id="close-dialog" class="icon-btn">×</button></div>
+      <div id="form-fields" class="form-grid"></div>
+      <div class="dialog-actions"><button type="button" id="cancel-dialog" class="secondary">Cancel</button><button type="submit" class="primary">Save record</button></div>
+      <p id="form-error" class="error"></p>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
